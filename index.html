@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Feliz Aniversário! 🎉</title>
     <style>
         * {
@@ -56,7 +56,6 @@
             background: rgba(255,255,255,0.2);
             padding: 10px 20px;
             border-radius: 15px;
-            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
 
@@ -86,7 +85,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 5;
+            z-index: 1;
         }
 
         .balloon {
@@ -95,9 +94,8 @@
             cursor: pointer;
             pointer-events: all;
             transition: transform 0.1s;
-            -webkit-user-select: none;
             user-select: none;
-            z-index: 5;
+            z-index: 1;
         }
 
         .balloon:active {
@@ -201,7 +199,7 @@
     <div class="container">
         <h1>🎂 Feliz Aniversário! 🎂</h1>
         <div class="instructions">
-            Toque em 10 balões para revelar a mensagem especial!
+            Toque em 10 balões para revelar a mensagem especial!👀
         </div>
         <div class="score">Balões estourados: <span id="score">0</span>/10</div>
     </div>
@@ -211,8 +209,8 @@
     <div class="message" id="message">
         <h2>🎉 Parabéns! 🎉</h2>
         <p>Você conseguiu estourar todos os balões!<br><br>
-        <strong>Que este novo ano seja cheio de alegria, realizações de sonhos(casamento😏) e poder de Deus!</strong><br><br>
-        Feliz aniversário cunhadaaaaaaaaaaaaaaaaaaaaaaaaaaaaa! 🎂🎈</p>
+        <strong>Que este novo ano seja cheio de alegria, realizações (casamento) e poder de Deus!!!!@</strong><br><br>
+        Feliz Aniversário Cunhadaaaaaaaaaa! 🎂🎈</p>
         <button class="restart-btn" onclick="restartGame()">Jogar Novamente</button>
     </div>
 
@@ -226,8 +224,10 @@
             balloon.className = 'balloon';
             balloon.textContent = balloonColors[Math.floor(Math.random() * balloonColors.length)];
             
-            const x = Math.random() * (window.innerWidth - 80);
-            const y = Math.random() * (window.innerHeight - 80);
+            // Evitar que balões apareçam na área superior (onde está o texto)
+            const headerHeight = 250;
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = headerHeight + Math.random() * (window.innerHeight - headerHeight - 100);
             
             balloon.style.left = x + 'px';
             balloon.style.top = y + 'px';
